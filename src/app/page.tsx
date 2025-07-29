@@ -26,7 +26,7 @@ export default function SolarSystemMessage() {
     {
       title: "Dear Husaina",
       content:
-        "I know we haven't been talking much on Instagram, and I want to understand why. I value our connection and want to make things right.",
+        "I know we haven't been talking much on Instagram, and I want to understand why. I value our connection and want to make things right. We talk on Snapchat, but not on Instagram, and I'm confused.",
       planet: "Mercury",
       color: "#8C7853",
       details:
@@ -62,7 +62,7 @@ export default function SolarSystemMessage() {
     {
       title: "Understanding You",
       content:
-        "I want to know about your childhood experiences, your culture, your journey. I respect that we come from different backgrounds, and I want to learn and understand.",
+        "I want to know about your childhood experiences, your culture, your journey. I respect that we come from different backgrounds, and I want to learn and understand. Like, who made your hair in braids (k kon choti banai aaptu hatu) and what was your childhood like as a Muslim?",
       planet: "Jupiter",
       color: "#D8CA9D",
       details:
@@ -71,7 +71,7 @@ export default function SolarSystemMessage() {
     {
       title: "I'm Here for You",
       content:
-        "I know I may not be the best listener, but I want to be. You can tell me anything - why you weren't going out, why you don't make online friends. I'll listen without judgment.",
+        "I know I may not be the best listener, but I want to be. You can tell me anything - why you weren't going out for 2-3 years, why you don't make online friends. I'll listen without judgment.",
       planet: "Saturn",
       color: "#FAD5A5",
       details:
@@ -80,7 +80,7 @@ export default function SolarSystemMessage() {
     {
       title: "Breaking Barriers",
       content:
-        "I understand you don't like texting and can't call. I respect your boundaries. This solar system is my way of reaching out - interactive, visual, and from the heart.",
+        "I understand you don't like texting and you can't call me. I respect your boundaries. This solar system is my way of reaching out - interactive, visual, and from the heart.",
       planet: "Uranus",
       color: "#4FD0E7",
       details:
@@ -89,7 +89,7 @@ export default function SolarSystemMessage() {
     {
       title: "I Don't Want to Let Go",
       content:
-        "I care about you and our connection. I'm willing to work on being better, more understanding, and more respectful. You and your love for cats deserve someone who truly listens.",
+        "I care about you and our connection. I'm willing to work on being better, more understanding, and more respectful. You and your love for cats deserve someone who truly listens. I don't want to let you go.",
       planet: "Neptune",
       color: "#4B70DD",
       details:
