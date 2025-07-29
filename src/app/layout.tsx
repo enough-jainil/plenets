@@ -3,30 +3,37 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Z.ai Code Scaffold - AI-Powered Development",
+  title: "A Universe of Messages for Husaina",
   description:
-    "Modern Next.js scaffold optimized for AI-powered development with Z.ai. Built with TypeScript, Tailwind CSS, and shadcn/ui.",
+    "An interactive solar system where each planet holds a special message.",
   keywords: [
-    "Z.ai",
-    "Next.js",
-    "TypeScript",
-    "Tailwind CSS",
-    "shadcn/ui",
-    "AI development",
+    "Solar System",
+    "Messages",
+    "Interactive",
+    "Three.js",
     "React",
+    "Next.js",
   ],
-  authors: [{ name: "Z.ai Team" }],
+  authors: [{ name: "Your Name Here" }],
   openGraph: {
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
-    url: "https://chat.z.ai",
-    siteName: "Z.ai",
+    title: "A Universe of Messages for Husaina",
+    description:
+      "An interactive solar system where each planet holds a special message.",
+    url: "https://your-domain.com", // Replace with your actual URL
+    siteName: "Messages from the Heart",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Z.ai Code Scaffold",
-    description: "AI-powered development with modern React stack",
+    title: "A Universe of Messages for Husaina",
+    description:
+      "An interactive solar system where each planet holds a special message.",
+  },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
   },
 };
 
