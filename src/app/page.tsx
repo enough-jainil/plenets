@@ -168,7 +168,7 @@ export default function SolarSystemMessage() {
     // Create planets with more realistic data
     const planets: THREE.Mesh[] = [];
     const scaleFactor = isMobile ? 0.6 : 1;
-    const distanceFactor = isMobile ? 0.5 : 1;
+    const distanceFactor = isMobile ? 1.2 : 2.5;
 
     const planetData = [
       {
@@ -226,9 +226,9 @@ export default function SolarSystemMessage() {
       const material = new THREE.MeshStandardMaterial({
         color: data.color,
         emissive: data.color,
-        emissiveIntensity: 0.4,
-        roughness: 0.5,
-        metalness: 0.1,
+        emissiveIntensity: 0.2,
+        roughness: 0.8,
+        metalness: 0.2,
       });
       const planet = new THREE.Mesh(geometry, material);
 
@@ -268,6 +268,31 @@ export default function SolarSystemMessage() {
     const pointLight = new THREE.PointLight(0xffffff, 2, 300);
     pointLight.position.set(0, 0, 0);
     scene.add(pointLight);
+
+    // Add shooting stars
+    const shootingStarsGeometry = new THREE.BufferGeometry();
+    const shootingStarsMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.5,
+      transparent: true,
+      opacity: 0.8,
+    });
+    const shootingStarsVertices: number[] = [];
+    for (let i = 0; i < 20; i++) {
+      const x = (Math.random() - 0.5) * 1000;
+      const y = (Math.random() - 0.5) * 1000;
+      const z = (Math.random() - 0.5) * 1000;
+      shootingStarsVertices.push(x, y, z);
+    }
+    shootingStarsGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(shootingStarsVertices, 3)
+    );
+    const shootingStars = new THREE.Points(
+      shootingStarsGeometry,
+      shootingStarsMaterial
+    );
+    scene.add(shootingStars);
 
     // OrbitControls for camera
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -347,6 +372,21 @@ export default function SolarSystemMessage() {
       // Rotate sun
       sun.rotation.y += 0.005;
       sunGlow.rotation.y += 0.003;
+
+      // Animate shooting stars
+      const positions = shootingStars.geometry.attributes.position
+        .array as any as number[];
+      for (let i = 0; i < positions.length; i += 3) {
+        positions[i] -= 2;
+        positions[i + 1] += 1;
+        if (positions[i] < -500) {
+          positions[i] = 500;
+        }
+        if (positions[i + 1] > 500) {
+          positions[i + 1] = -500;
+        }
+      }
+      shootingStars.geometry.attributes.position.needsUpdate = true;
 
       // Orbit planets and check for collisions
       planets.forEach((planet, index) => {
