@@ -238,7 +238,7 @@ export default function SolarSystemMessage() {
         speed: data.speed,
         angle: Math.random() * Math.PI * 2,
         originalScale: 1,
-        baseRadius: data.radius,
+        radius: data.radius,
       };
 
       planets.push(planet);
@@ -348,14 +348,39 @@ export default function SolarSystemMessage() {
       sun.rotation.y += 0.005;
       sunGlow.rotation.y += 0.003;
 
-      // Orbit planets
-      planets.forEach((planet) => {
+      // Orbit planets and check for collisions
+      planets.forEach((planet, index) => {
         planet.userData.angle += planet.userData.speed;
         planet.position.x =
           Math.cos(planet.userData.angle) * planet.userData.distance;
         planet.position.z =
           Math.sin(planet.userData.angle) * planet.userData.distance;
         planet.rotation.y += 0.01;
+
+        // Collision detection
+        for (let i = index + 1; i < planets.length; i++) {
+          const otherPlanet = planets[i];
+          const distance = planet.position.distanceTo(otherPlanet.position);
+          const minDistance =
+            planet.userData.radius + otherPlanet.userData.radius;
+
+          if (distance < minDistance) {
+            // A more stable collision response
+            const overlap = minDistance - distance;
+            const angle1 = Math.atan2(planet.position.z, planet.position.x);
+            const angle2 = Math.atan2(
+              otherPlanet.position.z,
+              otherPlanet.position.x
+            );
+            const angleDiff = angle1 - angle2;
+
+            // Adjust angles to move planets apart along their orbits
+            const adjustment =
+              (overlap / planet.userData.distance) * Math.sign(angleDiff);
+            planet.userData.angle += adjustment / 2;
+            otherPlanet.userData.angle -= adjustment / 2;
+          }
+        }
       });
 
       renderer.render(scene, camera);
