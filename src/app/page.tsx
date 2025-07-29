@@ -172,63 +172,78 @@ export default function SolarSystemMessage() {
 
     const planetData = [
       {
+        name: "Mercury",
         radius: 0.38 * scaleFactor,
         distance: 5.8 * distanceFactor,
         speed: 0.02,
-        color: 0x8c7853,
-      }, // Mercury
+        texture: "mercurymap.jpg",
+      },
       {
+        name: "Venus",
         radius: 0.95 * scaleFactor,
         distance: 7.2 * distanceFactor,
         speed: 0.015,
-        color: 0xffc649,
-      }, // Venus
+        texture: "venusmap.jpg",
+      },
       {
+        name: "Earth",
         radius: 1.0 * scaleFactor,
         distance: 8.5 * distanceFactor,
         speed: 0.01,
-        color: 0x6b93d6,
-      }, // Earth
+        texture: "earthmap1k.jpg",
+      },
       {
+        name: "Mars",
         radius: 0.53 * scaleFactor,
         distance: 10.0 * distanceFactor,
         speed: 0.008,
-        color: 0xcd5c5c,
-      }, // Mars
+        texture: "mars_1k_color.jpg",
+      },
       {
+        name: "Jupiter",
         radius: 2.5 * scaleFactor,
         distance: 13.5 * distanceFactor,
         speed: 0.005,
-        color: 0xd8ca9d,
-      }, // Jupiter
+        texture: "jupitermap.jpg",
+      },
       {
+        name: "Saturn",
         radius: 2.0 * scaleFactor,
         distance: 16.5 * distanceFactor,
         speed: 0.003,
-        color: 0xfad5a5,
-      }, // Saturn
+        texture: "saturnmap.jpg",
+      },
       {
+        name: "Uranus",
         radius: 1.2 * scaleFactor,
         distance: 19.0 * distanceFactor,
         speed: 0.002,
-        color: 0x4fd0e7,
-      }, // Uranus
+        texture: "uranusmap.jpg",
+      },
       {
+        name: "Neptune",
         radius: 1.1 * scaleFactor,
         distance: 21.0 * distanceFactor,
         speed: 0.001,
-        color: 0x4b70dd,
-      }, // Neptune
+        texture: "neptunemap.jpg",
+      },
     ];
+
+    const textureLoader = new THREE.TextureLoader();
 
     planetData.forEach((data, index) => {
       const geometry = new THREE.SphereGeometry(data.radius, 32, 32);
       const material = new THREE.MeshStandardMaterial({
-        color: data.color,
-        emissive: data.color,
-        emissiveIntensity: 0.2,
-        roughness: 0.8,
-        metalness: 0.2,
+        map: textureLoader.load(
+          `textures/${data.texture}`,
+          () => {
+            console.log(`Loaded texture for ${data.name}`);
+          },
+          undefined,
+          () => {
+            console.error(`Failed to load texture for ${data.name}`);
+          }
+        ),
       });
       const planet = new THREE.Mesh(geometry, material);
 
@@ -251,7 +266,7 @@ export default function SolarSystemMessage() {
         64
       );
       const orbitMaterial = new THREE.MeshBasicMaterial({
-        color: data.color,
+        color: messages[index].color,
         transparent: true,
         opacity: 0.2,
         side: THREE.DoubleSide,
@@ -259,15 +274,84 @@ export default function SolarSystemMessage() {
       const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
       orbit.rotation.x = Math.PI / 2;
       scene.add(orbit);
+
+      if (planetData[index].name === "Saturn") {
+        const ringGeometry = new THREE.RingGeometry(
+          data.radius + 0.5,
+          data.radius + 2,
+          64
+        );
+        const ringMaterial = new THREE.MeshBasicMaterial({
+          map: textureLoader.load("textures/saturnringcolor.jpg"),
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.8,
+        });
+        const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring.rotation.x = Math.PI / 2;
+        planet.add(ring);
+      }
+      if (planetData[index].name === "Uranus") {
+        const ringGeometry = new THREE.RingGeometry(
+          data.radius + 0.2,
+          data.radius + 1,
+          64
+        );
+        const ringMaterial = new THREE.MeshBasicMaterial({
+          map: textureLoader.load("textures/uranusringcolour.jpg"),
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.8,
+        });
+        const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring.rotation.x = Math.PI / 2;
+        planet.add(ring);
+      }
     });
 
     // Add lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xffffff, 2, 300);
+    const pointLight = new THREE.PointLight(0xffffff, 1.5, 1000);
     pointLight.position.set(0, 0, 0);
     scene.add(pointLight);
+
+    const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.5);
+    scene.add(hemisphereLight);
+
+    // Add moons
+    const moons: THREE.Mesh[] = [];
+    const moonData = [
+      { parent: "Earth", radius: 0.2, distance: 2, speed: 0.05 },
+      { parent: "Mars", radius: 0.1, distance: 1.5, speed: 0.06 },
+      { parent: "Mars", radius: 0.1, distance: 2, speed: 0.04 },
+      { parent: "Jupiter", radius: 0.3, distance: 4, speed: 0.03 },
+      { parent: "Jupiter", radius: 0.4, distance: 5, speed: 0.02 },
+      { parent: "Jupiter", radius: 0.2, distance: 6, speed: 0.04 },
+      { parent: "Jupiter", radius: 0.3, distance: 7, speed: 0.05 },
+    ];
+
+    moonData.forEach((data) => {
+      const geometry = new THREE.SphereGeometry(data.radius, 32, 32);
+      const material = new THREE.MeshStandardMaterial({ color: 0xaaaaaa });
+      const moon = new THREE.Mesh(geometry, material);
+      const parent = planets.find(
+        (p) =>
+          p.userData.messageIndex ===
+          messages.findIndex((m) => m.planet === data.parent)
+      );
+      if (parent) {
+        moon.userData = {
+          parent,
+          distance: data.distance,
+          speed: data.speed,
+          angle: Math.random() * Math.PI * 2,
+        };
+        moons.push(moon);
+        scene.add(moon);
+      }
+    });
 
     // Add shooting stars
     const shootingStarsGeometry = new THREE.BufferGeometry();
@@ -396,6 +480,19 @@ export default function SolarSystemMessage() {
         planet.position.z =
           Math.sin(planet.userData.angle) * planet.userData.distance;
         planet.rotation.y += 0.01;
+
+        // Orbit moons
+        moons
+          .filter((m) => m.userData.parent === planet)
+          .forEach((moon) => {
+            moon.userData.angle += moon.userData.speed;
+            moon.position.x =
+              planet.position.x +
+              Math.cos(moon.userData.angle) * moon.userData.distance;
+            moon.position.z =
+              planet.position.z +
+              Math.sin(moon.userData.angle) * moon.userData.distance;
+          });
 
         // Collision detection
         for (let i = index + 1; i < planets.length; i++) {
