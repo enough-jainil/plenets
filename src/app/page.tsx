@@ -24,72 +24,72 @@ export default function SolarSystemMessage() {
 
   const messages: MessageData[] = [
     {
-      title: "Dear Husaina",
+      title: "Hey Husaina!",
       content:
-        "I know we haven't been talking much on Instagram, and I want to understand why. I value our connection and want to make things right. We talk on Snapchat, but not on Instagram, and I'm confused.",
+        "Are you a black hole? Because you keep sucking me in. I know we don't talk much on Instagram, but my DMs are always open for your gravitational pull.",
       planet: "Mercury",
       color: "#8C7853",
       details:
         "The smallest and innermost planet in the Solar System. Mercury has no atmosphere to retain heat, causing extreme temperature variations.",
     },
     {
-      title: "I'm Sorry",
+      title: "My Bad!",
       content:
-        "If I've been too much or annoying, I truly apologize. I promise to be a better listener and less focused on 'boys talk'. Meri mummy ki kasam, I will never judge you.",
+        "I'm sorry if I've been a bit of a comet lately - a little too bright and all over the place. I'll try to be more like a stable orbit around you. And no more 'boys talk', I swear on my favorite constellation.",
       planet: "Venus",
       color: "#FFC649",
       details:
         "The second planet from the Sun, often called Earth's 'sister planet' due to similar size. It has a thick, toxic atmosphere and is the hottest planet.",
     },
     {
-      title: "I Want to Know You",
+      title: "Let's Explore!",
       content:
-        "I'm genuinely interested in knowing you better - your childhood, your love for basketball and dark romance novels, what makes you smile. I want to understand your world.",
+        "I want to know everything about you! Your favorite basketball team, the darkest romance novel you've ever read, and what makes you laugh so hard you snort. Let's make our own universe of inside jokes.",
       planet: "Earth",
       color: "#6B93D6",
       details:
         "Our home planet, the third from the Sun. It's the only known celestial body to support life, with 71% of its surface covered by water.",
     },
     {
-      title: "Your Beauty",
+      title: "You're a Star!",
       content:
-        "You are beautiful inside and out. I see your kindness, your interests, your unique personality. I want to appreciate all of who you are.",
+        "You're not just beautiful, you're a whole galaxy. I'm just a humble astronaut trying to explore your awesomeness. Permission to come aboard?",
       planet: "Mars",
       color: "#CD5C5C",
       details:
         "The fourth planet from the Sun, known as the 'Red Planet' due to iron oxide on its surface. It has the largest dust storms in the Solar System.",
     },
     {
-      title: "Understanding You",
+      title: "Cultural Exchange!",
       content:
-        "I want to know about your childhood experiences, your culture, your journey. I respect that we come from different backgrounds, and I want to learn and understand. Like, who made your hair in braids (k kon choti banai aaptu hatu) and what was your childhood like as a Muslim?",
+        "I'm fascinated by your culture! Teach me about your childhood, your traditions, and who did your amazing braids (k kon chooti banai aaptu hatu). I'll trade you stories about my weird family.",
       planet: "Jupiter",
       color: "#D8CA9D",
       details:
         "The largest planet in our Solar System, a gas giant with a prominent Great Red Spot—a storm larger than Earth. It has 79 known moons.",
     },
     {
-      title: "I'm Here for You",
+      title: "I'm All Ears!",
       content:
-        "I know I may not be the best listener, but I want to be. You can tell me anything - why you weren't going out for 2-3 years, why you don't make online friends. I'll listen without judgment.",
+        "I know I can be a space cadet sometimes, but I'm here to listen. Tell me why you've been in hibernation for 2-3 years and why you're anti-social online. I promise I won't judge, even if you tell me you're secretly a cat.",
       planet: "Saturn",
       color: "#FAD5A5",
       details:
         "The sixth planet from the Sun, famous for its spectacular ring system made of ice and rock particles. It's the least dense planet, able to float on water.",
     },
     {
-      title: "Breaking Barriers",
+      title: "Texting is Hard!",
       content:
-        "I understand you don't like texting and you can't call me. I respect your boundaries. This solar system is my way of reaching out - interactive, visual, and from the heart.",
+        "I get it, texting is the black hole of communication. And since you can't call, I built you this entire solar system instead. Is this a big enough gesture for you?",
       planet: "Uranus",
       color: "#4FD0E7",
       details:
         "An ice giant that rotates on its side, making it unique among planets. It has faint rings and 27 known moons, with a pale blue color due to methane.",
     },
     {
-      title: "I Don't Want to Let Go",
+      title: "Don't Ghost Me!",
       content:
-        "I care about you and our connection. I'm willing to work on being better, more understanding, and more respectful. You and your love for cats deserve someone who truly listens. I don't want to let you go.",
+        "I'm not ready to let our connection turn into a ghost nebula. You're the cat's pajamas, and I want to be the one who gets to hear you purr. Let's not let this be the final frontier.",
       planet: "Neptune",
       color: "#4B70DD",
       details:
