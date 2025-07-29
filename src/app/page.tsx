@@ -149,7 +149,7 @@ export default function SolarSystemMessage() {
     const sunMaterial = new THREE.MeshStandardMaterial({
       color: 0xffd700,
       emissive: 0xffd700,
-      emissiveIntensity: 0.5,
+      emissiveIntensity: 1,
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     sun.userData = { pulsePhase: 0 };
@@ -223,7 +223,13 @@ export default function SolarSystemMessage() {
 
     planetData.forEach((data, index) => {
       const geometry = new THREE.SphereGeometry(data.radius, 32, 32);
-      const material = new THREE.MeshLambertMaterial({ color: data.color });
+      const material = new THREE.MeshStandardMaterial({
+        color: data.color,
+        emissive: data.color,
+        emissiveIntensity: 0.4,
+        roughness: 0.5,
+        metalness: 0.1,
+      });
       const planet = new THREE.Mesh(geometry, material);
 
       planet.userData = {
@@ -256,10 +262,10 @@ export default function SolarSystemMessage() {
     });
 
     // Add lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+    const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
 
-    const pointLight = new THREE.PointLight(0xffffff, 1, 100);
+    const pointLight = new THREE.PointLight(0xffffff, 2, 300);
     pointLight.position.set(0, 0, 0);
     scene.add(pointLight);
 
