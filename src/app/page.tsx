@@ -277,8 +277,8 @@ export default function SolarSystemMessage() {
 
       if (planetData[index].name === "Saturn") {
         const ringGeometry = new THREE.RingGeometry(
-          data.radius + 0.5,
-          data.radius + 2,
+          data.radius + (isMobile ? 0.2 : 0.5),
+          data.radius + (isMobile ? 1 : 2),
           64
         );
         const ringMaterial = new THREE.MeshBasicMaterial({
@@ -293,8 +293,8 @@ export default function SolarSystemMessage() {
       }
       if (planetData[index].name === "Uranus") {
         const ringGeometry = new THREE.RingGeometry(
-          data.radius + 0.2,
-          data.radius + 1,
+          data.radius + (isMobile ? 0.1 : 0.2),
+          data.radius + (isMobile ? 0.5 : 1),
           64
         );
         const ringMaterial = new THREE.MeshBasicMaterial({
@@ -446,7 +446,6 @@ export default function SolarSystemMessage() {
       requestAnimationFrame(animate);
 
       controls.update(); // only required if controls.enableDamping = true
-
       // Pulse sun
       sun.userData.pulsePhase += 0.02;
       const pulseScale = 1 + Math.sin(sun.userData.pulsePhase) * 0.1;
@@ -548,7 +547,7 @@ export default function SolarSystemMessage() {
         mountRef.current.removeChild(renderer.domElement);
       }
     };
-  }, [isMobile]); // Add isMobile to dependency array
+  }, [isMobile]);
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden">
