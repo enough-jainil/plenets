@@ -244,8 +244,14 @@ export default function SolarSystemMessage() {
             console.error(`Failed to load texture for ${data.name}`);
           }
         ),
+        emissive: messages[index].color,
+        emissiveIntensity: 0.5,
       });
       const planet = new THREE.Mesh(geometry, material);
+
+      const planetLight = new THREE.PointLight(messages[index].color, 2, 100);
+      planetLight.position.set(0, 0, 0);
+      planet.add(planetLight);
 
       planet.userData = {
         messageIndex: index,
