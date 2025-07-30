@@ -267,14 +267,14 @@ export default function SolarSystemMessage() {
 
       // Add orbit ring
       const orbitGeometry = new THREE.RingGeometry(
-        data.distance - 0.05,
-        data.distance + 0.05,
+        data.distance - 0.1,
+        data.distance + 0.1,
         64
       );
       const orbitMaterial = new THREE.MeshBasicMaterial({
         color: messages[index].color,
         transparent: true,
-        opacity: 0.2,
+        opacity: 0.4,
         side: THREE.DoubleSide,
       });
       const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
