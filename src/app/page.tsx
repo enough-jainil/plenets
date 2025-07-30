@@ -168,7 +168,7 @@ export default function SolarSystemMessage() {
     // Create planets with more realistic data
     const planets: THREE.Mesh[] = [];
     const scaleFactor = isMobile ? 0.6 : 1;
-    const distanceFactor = isMobile ? 1.2 : 2.5;
+    const distanceFactor = isMobile ? 1.8 : 3.5;
 
     const planetData = [
       {
@@ -181,49 +181,49 @@ export default function SolarSystemMessage() {
       {
         name: "Venus",
         radius: 0.95 * scaleFactor,
-        distance: 7.2 * distanceFactor,
+        distance: 8.2 * distanceFactor,
         speed: 0.015,
         texture: "venusmap.jpg",
       },
       {
         name: "Earth",
         radius: 1.0 * scaleFactor,
-        distance: 8.5 * distanceFactor,
+        distance: 10.5 * distanceFactor,
         speed: 0.01,
         texture: "earthmap1k.jpg",
       },
       {
         name: "Mars",
         radius: 0.53 * scaleFactor,
-        distance: 10.0 * distanceFactor,
+        distance: 12.0 * distanceFactor,
         speed: 0.008,
         texture: "mars_1k_color.jpg",
       },
       {
         name: "Jupiter",
         radius: 2.5 * scaleFactor,
-        distance: 13.5 * distanceFactor,
+        distance: 15.5 * distanceFactor,
         speed: 0.005,
         texture: "jupitermap.jpg",
       },
       {
         name: "Saturn",
         radius: 2.0 * scaleFactor,
-        distance: 16.5 * distanceFactor,
+        distance: 18.5 * distanceFactor,
         speed: 0.003,
         texture: "saturnmap.jpg",
       },
       {
         name: "Uranus",
         radius: 1.2 * scaleFactor,
-        distance: 19.0 * distanceFactor,
+        distance: 21.0 * distanceFactor,
         speed: 0.002,
         texture: "uranusmap.jpg",
       },
       {
         name: "Neptune",
         radius: 1.1 * scaleFactor,
-        distance: 21.0 * distanceFactor,
+        distance: 23.0 * distanceFactor,
         speed: 0.001,
         texture: "neptunemap.jpg",
       },
@@ -323,13 +323,13 @@ export default function SolarSystemMessage() {
     // Add moons
     const moons: THREE.Mesh[] = [];
     const moonData = [
-      { parent: "Earth", radius: 0.2, distance: 2, speed: 0.05 },
-      { parent: "Mars", radius: 0.1, distance: 1.5, speed: 0.06 },
-      { parent: "Mars", radius: 0.1, distance: 2, speed: 0.04 },
-      { parent: "Jupiter", radius: 0.3, distance: 4, speed: 0.03 },
-      { parent: "Jupiter", radius: 0.4, distance: 5, speed: 0.02 },
-      { parent: "Jupiter", radius: 0.2, distance: 6, speed: 0.04 },
-      { parent: "Jupiter", radius: 0.3, distance: 7, speed: 0.05 },
+      { parent: "Earth", radius: 0.2, distance: 1.5, speed: 0.05 },
+      { parent: "Mars", radius: 0.1, distance: 1, speed: 0.06 },
+      { parent: "Mars", radius: 0.1, distance: 1.5, speed: 0.04 },
+      { parent: "Jupiter", radius: 0.3, distance: 3, speed: 0.03 },
+      { parent: "Jupiter", radius: 0.4, distance: 3.5, speed: 0.02 },
+      { parent: "Jupiter", radius: 0.2, distance: 4, speed: 0.04 },
+      { parent: "Jupiter", radius: 0.3, distance: 4.5, speed: 0.05 },
     ];
 
     moonData.forEach((data) => {
